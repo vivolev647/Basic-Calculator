@@ -1,83 +1,83 @@
-Num1 = 0
-Num2 = 0
-FinishedVal = 0
+operand_one = 0
+operand_two = 0
+result = 0
 inp = input("Please input your calculation: ")
 inp = inp.replace(" ", "")
 table = [] # Creates a blank table for later use
-NumbersTable = []
-OperatorLocationTable = []
+numbers_table = []
+operator_location_table = []
 
 for q in range(len(inp)): # Loop that adds things into a table
     table.append(inp[q])
 
-OperatorPlusAmount = table.count("+")
-OperatorMinusAmount = table.count("-")
-OperatorMultiplyAmount = table.count("*")
-OperatorDivideAmount = table.count("/")
+operator_plus_amount = table.count("+")
+operator_minus_amount = table.count("-")
+operator_multiply_amount = table.count("*")
+operator_divide_amount = table.count("/")
 
-def OperatorPlusAmount2():
-    for b in range(OperatorPlusAmount):
-        OperatorLocationTable.append(table.index("+"))
+def operator_plus_amount_function():
+    for b in range(operator_plus_amount):
+        operator_location_table.append(table.index("+"))
         table[table.index("+")] = "."
 
-def OperatorMinusAmount2():
-    for b in range(OperatorMinusAmount):
-        OperatorLocationTable.append(table.index("-"))
+def operator_minus_amount_function():
+    for b in range(operator_minus_amount):
+        operator_location_table.append(table.index("-"))
         table[table.index("-")] = "."
 
-def OperatorMultiplyAmount2():
-    for b in range(OperatorMultiplyAmount):
-        OperatorLocationTable.append(table.index("*"))
+def operator_multiply_amount_function():
+    for b in range(operator_multiply_amount):
+        operator_location_table.append(table.index("*"))
         table[table.index("*")] = "."
 
-def OperatorDivideAmount2():
-    for b in range(OperatorDivideAmount):
-        OperatorLocationTable.append(table.index("/"))
+def operator_divide_amount_function():
+    for b in range(operator_divide_amount):
+        operator_location_table.append(table.index("/"))
         table[table.index("/")] = "."
-OperatorDivideAmount2()
-OperatorMinusAmount2()
-OperatorPlusAmount2()
-OperatorMultiplyAmount2()
+operator_divide_amount_function()
+operator_minus_amount_function()
+operator_plus_amount_function()
+operator_multiply_amount_function()
 
-OperatorLocationTable.sort()
-print(OperatorLocationTable)
+operator_location_table.sort()
+print(operator_location_table)
 
-for w in range(len(OperatorLocationTable)):
-    Operator = inp[OperatorLocationTable[w]]
-    if FinishedVal == 0:
-        Num1 = inp[0:OperatorLocationTable[w]]
+for w in range(len(operator_location_table)):
+    operator = inp[operator_location_table[w]]
+    if result == 0:
+        operand_one = inp[0:operator_location_table[w]]
         try:
-            Num2 = inp[OperatorLocationTable[w] + 1:OperatorLocationTable[w+1]]
+            operand_two = inp[operator_location_table[w] + 1:operator_location_table[w+1]]
         except:
-            Num2 = inp[OperatorLocationTable[w] + 1:len(inp)]
+            operand_two = inp[operator_location_table[w] + 1:len(inp)]
 
         
-        if Operator == "*":
-            FinishedVal = int(Num1) * int(Num2)
-        elif Operator == "+":
-            FinishedVal = int(Num1) + int(Num2)
-        elif Operator == "/":
-            FinishedVal = int(Num1) / int(Num2)
-        elif Operator == "-":
-            FinishedVal = int(Num1) - int(Num2)
+        if operator == "*":
+            result = int(operand_one) * int(operand_two)
+        elif operator == "+":
+            result = int(operand_one) + int(operand_two)
+        elif operator == "/":
+            result = int(operand_one) / int(operand_two)
+        elif operator == "-":
+            result = int(operand_one) - int(operand_two)
     
     else:
         try:
-            Num2 = inp[OperatorLocationTable[w] + 1:OperatorLocationTable[w+1]]
+            operand_two = inp[operator_location_table[w] + 1:operator_location_table[w+1]]
         except:
-            Num2 = inp[OperatorLocationTable[w] + 1:len(inp)]
+            operand_two = inp[operator_location_table[w] + 1:len(inp)]
 
-        if Operator == "*":
-            FinishedVal = FinishedVal * int(Num2)
-        elif Operator == "+":
-            FinishedVal = FinishedVal + int(Num2)
-        elif Operator == "/":
-            FinishedVal = FinishedVal / int(Num2)
-        elif Operator == "-":
-            FinishedVal = FinishedVal - int(Num2)
+        if operator == "*":
+            result = result * int(operand_two)
+        elif operator == "+":
+            result = result + int(operand_two)
+        elif operator == "/":
+            result = result / int(operand_two)
+        elif operator == "-":
+            result = result - int(operand_two)
 
     
-print(f"Your Finished Value is: {FinishedVal}")
+print(f"Your Finished Value is: {result}")
 
 
 
